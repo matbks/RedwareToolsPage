@@ -1,0 +1,90 @@
+sap.ui.define(
+  [
+    "sap/ui/base/Object",
+    "sap/m/SelectDialog",
+    "sap/m/Menu",
+    "sap/m/RadioButton",
+    "sap/m/RadioButtonGroup",
+  ],
+  function (Object, SelectDialog, Menu, RadioButton, RadioButtonGroup) {
+    "use strict";
+
+    return Object.extend(
+      "creditblock.zadocreditblock.controller.RedwareTools.ConfigScreen",
+      {
+        constructor: function (oParentView) {
+          Object.apply(this);
+
+          this._oParentView = oParentView;
+
+          this._configScreen = this._buildConfigScreen(this._oParentView);
+
+          var oSemanticFullscreenPage = oParentView.byId("myFullscreenPage");
+
+          var oButton = new sap.m.Button({
+            // text: "My Button",
+            icon: "sap-icon://action-settings",
+            press: function () {
+              this._configScreen.open();
+            }.bind(this),
+          });
+
+          oSemanticFullscreenPage.addCustomHeaderContent(oButton);
+
+          if (localStorage.getItem("SapTheme"))
+          {
+          sap.ui.getCore().applyTheme(localStorage.getItem("SapTheme"));
+          }
+        },
+
+        _buildConfigScreen: function (oParentView) {
+          var oConfigScreen = new sap.m.Dialog({
+            title: "Configurações",
+            contentWidth: "50px",
+            contentHeight: "50px",
+            resizable: true,
+            draggable: true,
+            content: new sap.m.RadioButtonGroup({
+              columns: 2,
+              buttons: [
+                new sap.m.RadioButton({
+                  text: "Dark Mode",
+                  select: function () {
+                    sap.ui.getCore().applyTheme("sap_fiori_3_dark");
+                    localStorage.setItem("SapTheme", "sap_fiori_3_dark");
+                  }.bind(this),
+                }),
+                new sap.m.RadioButton({
+                  text: "White Mode",
+                  select: function () {
+                    sap.ui.getCore().applyTheme("sap_fiori_3");
+                    localStorage.setItem("SapTheme", "sap_fiori_3");
+                  }.bind(this),
+                }),
+              ],
+            }),
+
+            beginButton: new sap.m.Button({
+              type: sap.m.ButtonType.Emphasized,
+              text: "OK",
+              press: function () {
+                oConfigScreen.close();
+              }.bind(this),
+            }),
+
+            endButton: new sap.m.Button({
+              text: "Close",
+              press: function () {
+                oConfigScreen.close();
+              }.bind(this),
+            }),
+          });
+ 
+          oParentView.addDependent(oConfigScreen);
+
+          return oConfigScreen;
+        },
+      }
+    );
+  }
+);
