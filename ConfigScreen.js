@@ -19,12 +19,19 @@ sap.ui.define(
 
           this._configScreen = this._buildConfigScreen(this._oParentView);
 
+          this._actualTheme = ( ( localStorage.getItem("SapTheme") == 'sap_fiori_3' ) ? 'whiteModeButton' : 'darkModeButton' ) ;
+
           var oSemanticFullscreenPage = oParentView.byId("myFullscreenPage");
 
           var oButton = new sap.m.Button({
             // text: "My Button",
-            icon: "sap-icon://action-settings",
+            icon: "sap-icon://action-settings", 
             press: function () {
+              this._configScreen.getContent()[0].getButtons().forEach( (button) => {
+                
+                if ( button.sId == this._actualTheme )
+                button.setSelected(true);
+              })
               this._configScreen.open();
             }.bind(this),
           });
@@ -34,6 +41,7 @@ sap.ui.define(
           if (localStorage.getItem("SapTheme"))
           {
           sap.ui.getCore().applyTheme(localStorage.getItem("SapTheme"));
+           
           }
         },
 
@@ -48,6 +56,7 @@ sap.ui.define(
               columns: 2,
               buttons: [
                 new sap.m.RadioButton({
+                  id:"darkModeButton",
                   text: "Dark Mode",
                   select: function () {
                     sap.ui.getCore().applyTheme("sap_fiori_3_dark");
@@ -55,6 +64,7 @@ sap.ui.define(
                   }.bind(this),
                 }),
                 new sap.m.RadioButton({
+                  id:"whiteModeButton",
                   text: "White Mode",
                   select: function () {
                     sap.ui.getCore().applyTheme("sap_fiori_3");
