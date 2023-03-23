@@ -19,8 +19,6 @@ sap.ui.define(
 
           this._configScreen = this._buildConfigScreen(this._oParentView);
 
-          this._actualTheme = ( ( localStorage.getItem("SapTheme") == 'sap_fiori_3' ) ? 'whiteModeButton' : 'darkModeButton' ) ;
-
           var oSemanticFullscreenPage = oParentView.byId("myFullscreenPage");
 
           var oButton = new sap.m.Button({
@@ -31,10 +29,12 @@ sap.ui.define(
                 .getContent()[0]
                 .getButtons()
                 .forEach((button) => {
-                  if (localStorage.getItem("SapTheme")) {
-                    sap.ui
-                      .getCore()
-                      .applyTheme(localStorage.getItem("SapTheme"));
+                  if (localStorage.getItem("SapTheme")) {                  
+
+                      this._actualTheme =
+                      localStorage.getItem("SapTheme") == "sap_fiori_3"
+                        ? "whiteModeButton"
+                        : "darkModeButton";
 
                       this._actualTheme = localStorage.getItem("SapTheme");
                   }
@@ -44,13 +44,13 @@ sap.ui.define(
             }.bind(this),
           });
 
-          oSemanticFullscreenPage.addCustomHeaderContent(oButton);
-
-          if (localStorage.getItem("SapTheme"))
-          {
-          sap.ui.getCore().applyTheme(localStorage.getItem("SapTheme"));
-           
+          if (localStorage.getItem("SapTheme")) {
+            sap.ui
+              .getCore()
+              .applyTheme(localStorage.getItem("SapTheme"));
           }
+
+          oSemanticFullscreenPage.addCustomHeaderContent(oButton);
         },
 
         _buildConfigScreen: function (oParentView) {
