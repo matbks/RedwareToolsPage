@@ -25,13 +25,21 @@ sap.ui.define(
 
           var oButton = new sap.m.Button({
             // text: "My Button",
-            icon: "sap-icon://action-settings", 
+            icon: "sap-icon://action-settings",
             press: function () {
-              this._configScreen.getContent()[0].getButtons().forEach( (button) => {
-                
-                if ( button.sId == this._actualTheme )
-                button.setSelected(true);
-              })
+              this._configScreen
+                .getContent()[0]
+                .getButtons()
+                .forEach((button) => {
+                  if (localStorage.getItem("SapTheme")) {
+                    sap.ui
+                      .getCore()
+                      .applyTheme(localStorage.getItem("SapTheme"));
+
+                      this._actualTheme = localStorage.getItem("SapTheme");
+                  }
+                  if (button.sId == this._actualTheme) button.setSelected(true);
+                });
               this._configScreen.open();
             }.bind(this),
           });
