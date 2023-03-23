@@ -35,8 +35,6 @@ sap.ui.define(
                       localStorage.getItem("SapTheme") == "sap_fiori_3"
                         ? "whiteModeButton"
                         : "darkModeButton";
-
-                      this._actualTheme = localStorage.getItem("SapTheme");
                   }
                   if (button.sId == this._actualTheme) button.setSelected(true);
                 });
