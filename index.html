@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        .feature-text {
+            flex: 2;
+        }
+
+        .feature-image {
+            flex: 1;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+
+        .feature-image img {
+            width: 40%;
+            height: auto;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-image2 {
+            flex: 1;
+            max-height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+
+        .feature-image2 img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-description {
+            font-size: 1rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redware Tools</h1>
+        <div class="description">Biblioteca Aceleradora - SAPUI5</div>
+
+        <div class="feature">
+            <div class="feature-text">
+                <div class="feature-title">Ajuda de pesquisa</div>
+                <div class="feature-description">Gera um Value Help.</div>
+                <div> </div>
+                <div class="feature-title">Features</div>
+                <ul>
+                    <li>Retorna opções para o usuário contendo chave e descrição</li>
+                    <li>Facilita a implemnetação de códigos customizados em seus eventos (ex: fazer algo após selecionar um item da lista)</li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <img src="img/valuehelp.png" alt="Image description" >
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-text">
+                <div class="feature-title">Botão de Cockpit</div>
+                <div class="feature-description">Permite a criação de um botão em uma smartTable. </div>
+                <div> </div>
+                <div class="feature-title">Features</div>
+                <ul>
+                    <li>Chama o back-end</li>
+                    <li>Permite atribuir icone e estilo</li>
+                    <li>Lida com mensagens de erro e sucesso</li>
+                </ul>
+            </div>
+
+            <div class="feature-image2">
+                <img src="img/button.png" alt="Image description">
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-text">
+                <div class="feature-title">Botão Dark Mode</div>
+                <div class="feature-description">Gera um botão para ativar o modo escuro ou claro</div>
+                <div> </div>
+                <div class="feature-title">Features</div>
+                <ul>
+                    <li>Guarda a decisão do usuário em cache</li>
+                    <li>Permite alternância entre modos</li> 
+                </ul>
+            </div>
+            <div class="feature-image2">
+                <img src="img/darkmode.png" alt="Image description" >
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
