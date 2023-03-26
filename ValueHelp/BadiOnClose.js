@@ -4,7 +4,8 @@ sap.ui.define([], function () {
     run: function (oEvent, oSelectedItem) { 
 
       //Implemente a badi aqui
-      
+
     },
   };
 });
+ 
